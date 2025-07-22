@@ -5,7 +5,7 @@ if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-// Eliminar usuario si se recibe parámetro ?eliminar=
+// Eliminar
 if (isset($_GET['eliminar'])) {
     $idEliminar = intval($_GET['eliminar']);
     $conn->query("DELETE FROM usuarios WHERE id = $idEliminar");
@@ -18,8 +18,8 @@ $registroExitoso = false;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($_POST["nombre"]) && !empty($_POST["correo"])) {
         // Formateo:
-        $nombre = ucwords(strtolower(trim($_POST["nombre"]))); // Capitaliza cada palabra
-        $correo = strtolower(trim($_POST["correo"]));          // Correo en minúscula
+        $nombre = ucwords(strtolower(trim($_POST["nombre"]))); 
+        $correo = strtolower(trim($_POST["correo"]));     
         
         $nombre = $conn->real_escape_string($nombre);
         $correo = $conn->real_escape_string($correo);
